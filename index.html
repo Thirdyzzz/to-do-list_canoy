@@ -6,42 +6,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-        crossorigin="anonymous"
-        >
-        
+        crossorigin="anonymous">
     
     <!-- SweetAlert CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <!-- SweetAlert JS -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <script src="app.js" defer></script>
-    <title>To Do List
-        
-    </title>
-    
-</head>
+    <!-- Bootstrap Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.0/font/bootstrap-icons.min.css" rel="stylesheet">
 
+    <style>
+        header {
+            background-color: #007bff; /* Bootstrap primary color */
+            color: #ffffff;
+        }
+        .btn-dark {
+            background-color: #0056b3; /* Darker blue for buttons */
+            border-color: #0056b3;
+        }
+        .btn-dark:hover {
+            background-color: #004080; /* Even darker blue on hover */
+            border-color: #004080;
+        }
+    </style>
+
+    <script src="app.js" defer></script>
+    <title>To Do List</title>
+</head>
 <body>
-    <header class="bg-success text-white py-5">
+    <!-- Header -->
+    <header class="py-4">
         <div class="container text-center">
-            <h1 class="display-4">To Do List</h1>
+            <h1 class="display-4">
+                <i class="bi bi-check-all"></i> To Do List
+            </h1>
         </div>
     </header>
 
+    <!-- Main Content -->
     <div class="container mt-4">
         <h2>Add Items</h2>
 
         <div id="lblsuccess" class="alert alert-success" style="display: none;"></div>
-        
+
         <form id="addForm" class="mb-4">
             <div class="form-row">
                 <div class="col-lg-8 col-md-8 col-sm-12 mb-2">
                     <input type="text" onkeyup="toggleButton(this, 'submit')"
-                        class="form-control" id="item" placeholder="Enter task" required>
+                        class="form-control form-control-lg" id="item" placeholder="Enter task" required>
                 </div>
                 <div class="col-lg-4 col-md-4 col-sm-12">
-                    <button type="submit" class="btn btn-dark btn-block" id="submit" disabled>Submit</button>
+                    <button type="submit" class="btn btn-dark btn-block btn-lg" id="submit" disabled>
+                        <i class="bi bi-plus"></i> Add Task
+                    </button>
                 </div>
             </div>
         </form>
@@ -64,8 +82,12 @@
             newItem.innerHTML = `
                 <span>${taskValue}</span>
                 <div>
-                    <button class="btn btn-warning btn-sm mr-2 edit-btn">Edit</button>
-                    <button class="btn btn-danger btn-sm delete-btn">Delete</button>
+                    <button class="btn btn-warning btn-sm mr-2 edit-btn">
+                        <i class="bi bi-pencil"></i>
+                    </button>
+                    <button class="btn btn-danger btn-sm delete-btn">
+                        <i class="bi bi-trash"></i>
+                    </button>
                 </div>
             `;
             return newItem;
